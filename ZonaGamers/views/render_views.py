@@ -1,14 +1,8 @@
-from django.shortcuts import render
-from django.urls import reverse
+from django.shortcuts import render, redirect
 from ..models import Usuario, Carrito, Juego, CarritoJuego
 # Create your views here.
-# Genera la URL para la vista 'detalle_hotel' con id=1
-#rl = reverse('index', args=[1])
 
-# Imprime la URL generada
-#print(url)
-
-def index(request):
+def home(request):
     context = {
         "user": ""
     } 
@@ -37,12 +31,14 @@ def carrito(request):
     return render(request, 'pages/carrito.html', context)
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
     context = {} 
     return render(request,'pages/login.html',context)
 
-def formulario(request):
+def registro(request):
     context = {} 
-    return render(request,'pages/formulario.html',context)
+    return render(request,'pages/registro.html',context)
 
 def producto_spider(request):
     context = {} 

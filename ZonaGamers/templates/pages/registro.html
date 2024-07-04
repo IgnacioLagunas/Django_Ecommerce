@@ -11,9 +11,19 @@
     
 </head>
 <body id="body_registro">
+    <div class="alerta">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
     
     <div class="row">
-        <form action="" id="formulario" class="col-6 text-center mx-auto mt-5" style="background-color: rgba(255, 255, 255, 0.69); border-radius: 20px;">
+        <form method="post" id="formulario" action="{% url 'register_user' %}" class="col-6 text-center mx-auto mt-5" style="background-color: rgba(255, 255, 255, 0.69); border-radius: 20px;">
+            {% csrf_token %}
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
@@ -21,7 +31,7 @@
                                     <div class="formulario__grupo" id="grupo__usuario">
                                         <label for="usuario" class="formulario__label">Usuario</label>
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Ingresar usuario">
+                                            <input type="text" class="formulario__input" name="username" id="usuario" placeholder="Ingresar usuario">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -33,7 +43,7 @@
                                     <div class="formulario__grupo" id="grupo__nombre">
                                         <label for="nombre" class="formulario__label">Nombre</label>
                                         <div class="formulario__grupo-input">
-                                            <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Ingresar Nombre">
+                                            <input type="text" class="formulario__input" name="name" id="nombre" placeholder="Ingresar Nombre">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -76,7 +86,7 @@
                                     <div class="formulario__grupo" id="grupo__correo">
                                         <label for="correo" class="formulario__label">Correo Electrónico</label>
                                         <div class="formulario__grupo-input">
-                                            <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                                            <input type="email" class="formulario__input" name="email" id="correo" placeholder="correo@correo.com">
                                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                         </div>
                                         <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
@@ -124,6 +134,6 @@
 
 </body>
 <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
-<script src="validacionesFormulario.js"></script>
+<!-- <script src="{% static "js/validacionesFormulario.js" %}"></script> -->
 <script src="https://kit.fontawesome.com/77785462c1.js" crossorigin="anonymous"></script>
 </html>

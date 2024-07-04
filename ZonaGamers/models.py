@@ -1,26 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 #Integrar con el modelo de django para seguridad
-class Usuario(models.Model):
-    rut = models.CharField(primary_key=True, max_length=10)
-    nombre = models.CharField(max_length=80)
-    email = models.EmailField(max_length=100, unique=True, blank=True, null=True)
-    apellido_paterno = models.CharField(max_length=30)
-    apellido_materno = models.CharField(max_length=30)
-    telefono = models.CharField(max_length=12)
-    password = models.CharField(max_length=30)
-    direccion = models.CharField(max_length=50, blank=True, null=True)
-    
-
-    def __str__(self):
-        return (
-            str(self.nombre)
-            + " " +
-            str(self.apellido_paterno)
-            + " " +
-            str(self.apellido_materno)
-        )
-    
    
 
 class Juego(models.Model):
@@ -70,6 +51,7 @@ class CarritoJuego(models.Model):
     carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
     juego = models.ForeignKey(Juego, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('carrito', 'juego')

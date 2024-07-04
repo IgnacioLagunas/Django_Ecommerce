@@ -2,12 +2,12 @@
 	box-sizing: border-box;
 }
 
-body {
+main {
 	font-family: 'Roboto', sans-serif;
 	background: #E5E5E5;
 }
 
-main {
+.formulario_container {
 	max-width: 800px;
 	width: 90%;
 	margin: auto;

@@ -8,7 +8,7 @@
         <h2 id="titulo_catalogo">Nuestro cátalogo</h2>
         
       </div>
-        <div class="row mt-5 d-flex ">
+        <div class="row mt-5 d-flex card-container">
              {% for juego in juegos %}
             <div class="card card-catalogo col-lg-2 col-md-4 col-6">
               {% if juego.imagen %}
@@ -16,9 +16,9 @@
               {% else %}
                 <img src="{% static 'images/last.avif' %}" alt="{{juego.nombre}}" class="card-img-top">    
               {% endif %}
-                <div class="card-body">
+                <div class="card-body card-content">
                     <h5 class="card-title">{{ juego.nombre }}</h5>
-                    <h5 class="card-title">${{ juego.precio }}</h5>
+                    <h5 class="card-price">${{ juego.precio }}</h5>
                     <h5 class="card-title">{{ juego.descripcion }}</h5>
                     <a href="{% url 'remove_from_cart' id=juego.id %}" class="btn btn-primary">-</a>
                     <a href="{% url 'add_to_cart' id=juego.id %}" class="btn btn-primary">+</a>

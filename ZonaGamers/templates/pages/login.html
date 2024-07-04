@@ -12,14 +12,15 @@
           <div class="row justify-content-center">
             <div class="col-md-6">
               <div class="container" id="login" style="width: 500px;">
-                <form class="px-4 py-3">
+                <form class="px-4 py-3" method="post" action="{% url 'login_user' %}">
+                  {% csrf_token %}
                   <div class="mb-3">
-                    <label for="exampleDropdownFormEmail1" class="form-label" style="font-weight: bold;">Correo electrónico</label>
-                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                    <label for="exampleDropdownFormEmail1" class="form-label" style="font-weight: bold;">Nombre de Usuario</label>
+                    <input  name="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="username">
                   </div>
                   <div class="mb-3">
                     <label for="exampleDropdownFormPassword1" class="form-label" style="font-weight: bold;">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
                   </div>
                   <div class="mb-3">
                     <div class="form-check">
@@ -30,9 +31,9 @@
                     </div>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary" >Ingresar</button>
                     <a href="/" class="btn btn-primary">Volver a Inicio</a>
-                    <a href="formulario" class="btn btn-primary">registrarse </a>
+                    <a href="registro" class="btn btn-primary">registrarse </a>
                   </div>
 
                 </form>
