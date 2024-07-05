@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from ..models import Usuario, Carrito, Juego, CarritoJuego
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def home(request):
@@ -20,6 +22,7 @@ def about(request):
     context = {} 
     return render(request,'pages/about.html',context)
 
+@login_required
 def carrito(request):
     carrito = CarritoJuego.objects.filter(carrito=1)
     total = 0
